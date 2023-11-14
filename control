@@ -1,0 +1,9 @@
+Package: me.lebao3105.sbaroverride
+Name: SBarOverride
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: lebao3105
+Author: lebao3105
+Section: Tweaks
+Depends: PreferenceLoader, firmware (>= 15.0)
