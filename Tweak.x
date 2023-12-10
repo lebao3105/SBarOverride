@@ -43,6 +43,8 @@ static BOOL showUsedBP; /* show used battery percents */
 					NSDate *date = [NSDate date];
 					[df setDateFormat:customtext];
 					target = [df stringFromDate:date];
+				} else {
+					target = customtext;
 				}
 				return %orig(target);
 			}
