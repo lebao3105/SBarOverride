@@ -1,8 +1,8 @@
 Package: me.lebao3105.sbaroverride
 Name: SBarOverride
-Version: 0.0.1
+Version: 1.0.0
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: An awesome status bar tweak!
 Maintainer: lebao3105
 Author: lebao3105
 Section: Tweaks

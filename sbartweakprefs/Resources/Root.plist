@@ -4,17 +4,11 @@
 <dict>
 	<key>items</key>
 	<array>
-		<!-- <dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>SBarOverride</string>
-		</dict> -->
 		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<true/>
+			<false/>
 			<key>defaults</key>
 			<string>me.lebao3105.sbartweakprefs</string>
 			<key>key</key>
@@ -26,27 +20,123 @@
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSEditTextCell</string>
+			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>Custom text:</string>
+			<string>Most times you don't need to respring.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Carrier text</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
 			<key>default</key>
-			<string>test</string>
-			<key>id</key>
-			<string>customtext</string>
+			<false/>
 			<key>defaults</key>
 			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>enabledCarrier</string>
+			<key>label</key>
+			<string>Enable?</string>
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
 		</dict>
 		<dict>
-			<key>action</key>
-			<string>killSpringBoard</string>
 			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>Restart SpringBoard</string>
+			<string>PSEditTextCell</string>
+			<!-- <key>default</key>
+			<string>test</string> -->
 			<key>defaults</key>
 			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>customCarriertext</string>
+			<key>label</key>
+			<string>Custom carrier text:</string>
+			<key>PostNotification</key>
+			<string>me.lebao3105.sbartweakprefsUpdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Clock</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>enabledClock</string>
+			<key>label</key>
+			<string>Enable?</string>
+			<key>PostNotification</key>
+			<string>me.lebao3105.sbartweakprefsUpdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>enabledClockFormat</string>
+			<key>label</key>
+			<string>Custom clock format</string>
+			<key>PostNotification</key>
+			<string>me.lebao3105.sbartweakprefsUpdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<!-- <key>default</key>
+			<string>test</string> -->
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>customtext</string>
+			<key>label</key>
+			<string>Custom clock text/format:</string>
+			<key>PostNotification</key>
+			<string>me.lebao3105.sbartweakprefsUpdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Battery percent</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>enabledBPercent</string>
+			<key>label</key>
+			<string>Enable tweak?</string>
+			<key>PostNotification</key>
+			<string>me.lebao3105.sbartweakprefsUpdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>showUsedBP</string>
+			<key>label</key>
+			<string>Show used battery percents (format: -value%)</string>
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
 		</dict>

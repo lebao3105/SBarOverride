@@ -1,6 +1,5 @@
 #import <Foundation/Foundation.h>
 #import "XXXRootListController.h"
-#import <spawn.h>
 
 @implementation XXXRootListController
 
@@ -10,14 +9,6 @@
 	}
 
 	return _specifiers;
-}
-
-- (void) killSpringBoard {
-	pid_t pid;
-	const char* args[] = {
-		"killall", "-9", "SpringBoard"
-	};
-	posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
 }
 
 @end

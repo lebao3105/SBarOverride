@@ -1,6 +1,6 @@
 TARGET := iphone:clang:latest:15.0
 INSTALL_TARGET_PROCESSES = SpringBoard
-
+THEOS_DEVICE_ID = 127.0.0.1
 
 include $(THEOS)/makefiles/common.mk
 
@@ -8,6 +8,10 @@ TWEAK_NAME = SBarOverride
 
 SBarOverride_FILES = Tweak.x
 SBarOverride_CFLAGS = -fobjc-arc
+
+ifeq ($(DEBUG_RLOG), 1)
+	SBarOverride_CFLAGS += -DDEBUG_RLOG
+endif
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += sbartweakprefs
