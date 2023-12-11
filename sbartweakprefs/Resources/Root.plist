@@ -6,6 +6,14 @@
 	<array>
 		<dict>
 			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>General</string>
+			<key>footerText</key>
+			<string>Wait for about a minute/battery drain or charge to see the changes.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<false/>
@@ -17,12 +25,6 @@
 			<string>Enable</string>
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSStaticTextCell</string>
-			<key>label</key>
-			<string>Most times you don't need to respring.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -111,34 +113,45 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Battery percent</string>
+			<key>footerText</key>
+			<string>Mode 0: off. Mode 1: show used battery percent text. Mode2: show used battery percent (icon). Mode 3: show used battery percent (both label and icon).
+			</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
+			<string>PSSegmentCell</string>
 			<key>default</key>
-			<false/>
+			<integer>0</integer>
+			<key>label</key>
+			<string>Modes</string>
+			<key>validTitles</key>
+			<array>
+				<string>Mode 0</string>
+				<string>Mode 1</string>
+				<string>Mode 2</string>
+				<string>Mode 3</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+			<key>key</key>
+			<string>batteryOptions</string>
 			<key>defaults</key>
 			<string>me.lebao3105.sbartweakprefs</string>
-			<key>key</key>
-			<string>enabledBPercent</string>
-			<key>label</key>
-			<string>Enable tweak?</string>
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>me.lebao3105.sbartweakprefs</string>
-			<key>key</key>
-			<string>showUsedBP</string>
-			<key>label</key>
-			<string>Show used battery percents (format: -value%)</string>
-			<key>PostNotification</key>
-			<string>me.lebao3105.sbartweakprefsUpdated</string>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Version 1.1.0. Made by @lebao3105.</string>
+			<key>footerAlignment</key>
+			<string>1</string>
 		</dict>
 	</array>
 	<key>title</key>

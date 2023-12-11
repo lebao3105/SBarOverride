@@ -14,12 +14,13 @@ static NSString *customCarriertext; /* custom carrier text */
 static BOOL enabledClock; /* custom clock text toggle */
 static BOOL enabledClockFormat; /* custom clock format toggle */
 static NSString *customtext; /* custom clock text */
-static BOOL enabledBPercent; /* battery percentage text hook toggle */
-static BOOL showUsedBP; /* show used battery percents */
+static NSInteger batteryOptions;
 
 @interface _UIStatusBarStringView: UILabel
 @property (nonatomic, assign, readwrite) BOOL isCarrier;
-// @property UIView *superview;
+@end
+
+@interface _UIBatteryView: UIView
 @end
 
 %group SBarOverride
@@ -32,10 +33,10 @@ static BOOL showUsedBP; /* show used battery percents */
 		RLog(text);
 		#endif
 
-		if ((enabledCarrier == YES) && ([self isCarrier] == YES))
+		if (enabledCarrier && [self isCarrier])
 			return %orig(customCarriertext);
 
-		if (enabledClock == YES) {
+		if (enabledClock) {
 			if ([text rangeOfString:@":"].location != NSNotFound) {
 				NSString *target;
 				if (enabledClockFormat == YES) {
@@ -50,7 +51,7 @@ static BOOL showUsedBP; /* show used battery percents */
 			}
 		}
 		
-		if ((enabledBPercent == YES) && (showUsedBP == YES)) {
+		if (batteryOptions > (NSInteger)0) {
 			if ([text rangeOfString:@"%"].location != NSNotFound) {
 				UIDevice *mydev = [UIDevice currentDevice];
 				[mydev setBatteryMonitoringEnabled:YES];
@@ -61,12 +62,24 @@ static BOOL showUsedBP; /* show used battery percents */
 		}
 	}
 	
-	else {
-		return %orig;
-	}
+	return %orig;
 }
 
 %end
+
+%hook _UIBatteryView
+
+- (void)setChargePercent: (CGFloat)percent {
+	if (enabled && (batteryOptions >= (NSInteger)2)) {
+		UIDevice *mydev = [UIDevice currentDevice];
+		[mydev setBatteryMonitoringEnabled:YES];
+		return %orig(1.0 - [mydev batteryLevel]);
+	}
+	return %orig;
+}
+
+%end
+
 %end
 
 void preferencesChanged() {
@@ -77,8 +90,7 @@ void preferencesChanged() {
 	enabledClock = (prefs && [prefs objectForKey:@"enabledClock"] ? [[prefs valueForKey:@"enabledClock"] boolValue] : NO);
 	enabledClockFormat = (prefs && [prefs objectForKey:@"enabledClockFormat"] ? [[prefs valueForKey:@"enabledClockFormat"] boolValue] : NO);
 	customtext = [prefs objectForKey:@"customtext"];
-	enabledBPercent = (prefs && [prefs objectForKey:@"enabledBPercent"] ? [[prefs valueForKey:@"enabledBPercent"] boolValue] : NO);
-	showUsedBP = (prefs && [prefs objectForKey:@"showUsedBP"] ? [[prefs valueForKey:@"showUsedBP"] boolValue] : NO);
+	batteryOptions = (prefs && [prefs objectForKey:@"batteryOptions"] ? [[prefs valueForKey:@"batteryOptions"] integerValue] : 0);
 }
 
 %ctor{
