@@ -10,7 +10,7 @@
 			<key>label</key>
 			<string>General</string>
 			<key>footerText</key>
-			<string>Wait for about a minute/battery drain or charge to see the changes. For the carrier text, a respring is advised to see the change everywhere.</string>
+			<string>A respring is required, except custom clock format (wait for about a minute).</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -63,6 +63,8 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Clock</string>
+			<key>footerText</key>
+			<string>Search online for clock format - no seconds support.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -98,9 +100,9 @@
 			<key>defaults</key>
 			<string>me.lebao3105.sbartweakprefs</string>
 			<key>key</key>
-			<string>customtext</string>
+			<string>customformat</string>
 			<key>label</key>
-			<string>Custom clock text/format:</string>
+			<string>Custom clock format:</string>
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
 		</dict>

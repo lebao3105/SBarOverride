@@ -51,7 +51,7 @@ static NSInteger batteryOptions;
 			}
 		}
 		
-		if (batteryOptions > (NSInteger)0) {
+		if ((batteryOptions > (NSInteger)0) && (batteryOptions != (NSInteger)2)) {
 			if ([text rangeOfString:@"%"].location != NSNotFound) {
 				UIDevice *mydev = [UIDevice currentDevice];
 				[mydev setBatteryMonitoringEnabled:YES];
@@ -62,7 +62,7 @@ static NSInteger batteryOptions;
 		}
 	}
 	
-	return %orig;
+	return %orig(text);
 }
 
 %end
@@ -75,7 +75,7 @@ static NSInteger batteryOptions;
 		[mydev setBatteryMonitoringEnabled:YES];
 		return %orig(1.0 - [mydev batteryLevel]);
 	}
-	return %orig;
+	return %orig(percent);
 }
 
 %end
