@@ -10,7 +10,7 @@
 			<key>label</key>
 			<string>General</string>
 			<key>footerText</key>
-			<string>A respring is required, except custom clock format (wait for about a minute).</string>
+			<string>A respring is required.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -100,7 +100,7 @@
 			<key>defaults</key>
 			<string>me.lebao3105.sbartweakprefs</string>
 			<key>key</key>
-			<string>customformat</string>
+			<string>customtext</string>
 			<key>label</key>
 			<string>Custom clock format:</string>
 			<key>PostNotification</key>
@@ -112,7 +112,7 @@
 			<key>label</key>
 			<string>Battery percent</string>
 			<key>footerText</key>
-			<string>Mode 0: off. Mode 1: show used battery percent text. Mode2: show used battery percent (icon). Mode 3: show used battery percent (both label and icon).
+			<string>Mode 0: off. Mode 1: show used battery percent text. Mode 2: show used battery percent (icon). Mode 3: show used battery percent (both label and icon).
 			</string>
 		</dict>
 		<dict>
