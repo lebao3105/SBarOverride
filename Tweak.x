@@ -4,10 +4,6 @@
 #import <RemoteLog.h>
 #endif
 
-/*
-	Tweak settings
-	All toggles are OFF by default!
-*/
 static BOOL enabled; /* main toggle */
 static BOOL enabledCarrier; /* custom carrier text toggle */
 static NSString *customCarriertext; /* custom carrier text */
@@ -15,12 +11,10 @@ static BOOL enabledClock; /* custom clock text toggle */
 static BOOL enabledClockFormat; /* custom clock format toggle */
 static NSString *customtext; /* custom clock text */
 static NSInteger batteryOptions;
+static BOOL showMinusSign; /* for the battery text */
 
 @interface _UIStatusBarStringView: UILabel
 @property (nonatomic, assign, readwrite) BOOL isCarrier;
-@end
-
-@interface _UIBatteryView: UIView
 @end
 
 %group SBarOverride
@@ -28,7 +22,7 @@ static NSInteger batteryOptions;
 
 - (void) setText:(id) text {
 
-	if (enabled == YES) {
+	if (enabled) {
 		#ifdef DEBUG_RLOG
 		RLog(text);
 		#endif
@@ -39,11 +33,10 @@ static NSInteger batteryOptions;
 		if (enabledClock) {
 			if ([text rangeOfString:@":"].location != NSNotFound) {
 				NSString *target;
-				if (enabledClockFormat == YES) {
+				if (enabledClockFormat) {
 					NSDateFormatter *df = [[NSDateFormatter alloc] init];
-					NSDate *date = [NSDate date];
 					[df setDateFormat:customtext];
-					target = [df stringFromDate:date];
+					target = [df stringFromDate:[NSDate date]];
 				} else {
 					target = customtext;
 				}
@@ -56,7 +49,9 @@ static NSInteger batteryOptions;
 				UIDevice *mydev = [UIDevice currentDevice];
 				[mydev setBatteryMonitoringEnabled:YES];
 				int left = (int)([mydev batteryLevel] * 100);
-				NSString *target = [NSString stringWithFormat:@"-%d%%", 100 - left];
+				NSString *target = [NSString stringWithFormat:@"%d%%", 100 - left];
+				if (showMinusSign)
+					return %orig([@"-" stringByAppendingString:target]);
 				return %orig(target);
 			}
 		}
@@ -91,6 +86,7 @@ void preferencesChanged() {
 	enabledClockFormat = (prefs && [prefs objectForKey:@"enabledClockFormat"] ? [[prefs valueForKey:@"enabledClockFormat"] boolValue] : NO);
 	customtext = [prefs objectForKey:@"customtext"];
 	batteryOptions = (prefs && [prefs objectForKey:@"batteryOptions"] ? [[prefs valueForKey:@"batteryOptions"] integerValue] : 0);
+	showMinusSign = (prefs && [prefs objectForKey:@"showMinusSign"] ? [[prefs valueForKey:@"showMinusSign"] boolValue] : YES);
 }
 
 %ctor{
