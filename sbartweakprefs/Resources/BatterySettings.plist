@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Battery percent</string>
+			<key>footerText</key>
+			<string>Mode 0: off. Mode 1: show used battery percent text. Mode 2: show used battery percent (icon). Mode 3: show used battery percent (both label and icon).
+			</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string>Modes</string>
+			<key>validTitles</key>
+			<array>
+				<string>Mode 0</string>
+				<string>Mode 1</string>
+				<string>Mode 2</string>
+				<string>Mode 3</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+			<key>key</key>
+			<string>batteryOptions</string>
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>PostNotification</key>
+			<string>me.lebao3105.sbartweakprefsUpdated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Only for tweak mode 1 or 3. Battery with percentage inside is not supported. Also by using this you're responsible for your battery health + your work. If your phone dies at 100% then definitively it's 0% in actual, and if you have any troubles for that, it's you.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>showMinusSign</string>
+			<key>label</key>
+			<string>Show minus sign in front of the percentage</string>
+			<key>PostNotification</key>
+			<string>me.lebao3105.sbartweakprefsUpdated</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Battery percentage icon</string>
+</dict>
+</plist>

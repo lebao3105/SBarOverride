@@ -15,7 +15,7 @@
 		<key>isController</key>
 		<true/>
 		<key>label</key>
-		<string>SBarTweakPrefs</string>
+		<string>SBarOverride</string>
 	</dict>
 </dict>
 </plist>
