@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.h": "objective-c",
+        "*.plist": "xml"
+    },
+    "editor.unusualLineTerminators": "off"
+}
