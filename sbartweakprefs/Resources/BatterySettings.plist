@@ -51,7 +51,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<false/>
+			<true/>
 			<key>defaults</key>
 			<string>me.lebao3105.sbartweakprefs</string>
 			<key>key</key>

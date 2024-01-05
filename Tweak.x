@@ -13,10 +13,6 @@ static NSString *customtext; /* custom clock text */
 static NSInteger batteryOptions;
 static BOOL showMinusSign; /* for the battery text */
 
-@interface _UIStatusBarStringView: UILabel
-@property (nonatomic, assign, readwrite) BOOL isCarrier;
-@end
-
 %group SBarOverride
 %hook _UIStatusBarStringView
 
@@ -27,25 +23,20 @@ static BOOL showMinusSign; /* for the battery text */
 		RLog(text);
 		#endif
 
-		if (enabledCarrier && [self isCarrier])
-			return %orig(customCarriertext);
-
-		if (enabledClock) {
-			if ([text rangeOfString:@":"].location != NSNotFound) {
-				NSString *target;
+		if ([text rangeOfString:@":"].location != NSNotFound) {
+			if (enabledClock) {
+				NSString *target = customtext;
 				if (enabledClockFormat) {
 					NSDateFormatter *df = [[NSDateFormatter alloc] init];
 					[df setDateFormat:customtext];
 					target = [df stringFromDate:[NSDate date]];
-				} else {
-					target = customtext;
 				}
 				return %orig(target);
 			}
 		}
 		
-		if ((batteryOptions > (NSInteger)0) && (batteryOptions != (NSInteger)2)) {
-			if ([text rangeOfString:@"%"].location != NSNotFound) {
+		else if ([text rangeOfString:@"%"].location != NSNotFound) {
+			if ((batteryOptions > (NSInteger)0) && (batteryOptions != (NSInteger)2)) {
 				UIDevice *mydev = [UIDevice currentDevice];
 				[mydev setBatteryMonitoringEnabled:YES];
 				int left = (int)([mydev batteryLevel] * 100);
@@ -55,6 +46,9 @@ static BOOL showMinusSign; /* for the battery text */
 				return %orig(target);
 			}
 		}
+
+		else if (enabledCarrier)
+			return %orig(customCarriertext);
 	}
 	
 	return %orig(text);
