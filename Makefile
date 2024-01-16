@@ -10,6 +10,7 @@ TWEAK_NAME = SBarOverride
 
 SBarOverride_FILES = Tweak.x
 SBarOverride_CFLAGS = -fobjc-arc
+SBarOverride_FRAMEWORKS = Alderis
 
 ifeq ($(DEBUG_RLOG), 1)
 	SBarOverride_CFLAGS += -DDEBUG_RLOG

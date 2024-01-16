@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <Alderis/Alderis.h>
 #ifdef DEBUG_RLOG
 #import <RemoteLog.h>
 #endif
@@ -10,8 +11,9 @@ static NSString *customCarriertext; /* custom carrier text */
 static BOOL enabledClock; /* custom clock text toggle */
 static BOOL enabledClockFormat; /* custom clock format toggle */
 static NSString *customtext; /* custom clock text */
-static NSInteger batteryOptions;
+static NSInteger batteryOptions; /* is the name not clear enough? */
 static BOOL showMinusSign; /* for the battery text */
+static UIColor *batteryTextColor;
 
 %group SBarOverride
 %hook _UIStatusBarStringView
@@ -54,6 +56,14 @@ static BOOL showMinusSign; /* for the battery text */
 	return %orig(text);
 }
 
+- (void)setColor: (id)color {
+	if (enabled) {
+		if (batteryTextColor)
+			return %orig(batteryTextColor);
+	}
+	return %orig(color);
+}
+
 %end
 
 %hook _UIBatteryView
@@ -81,6 +91,7 @@ void preferencesChanged() {
 	customtext = [prefs objectForKey:@"customtext"];
 	batteryOptions = (prefs && [prefs objectForKey:@"batteryOptions"] ? [[prefs valueForKey:@"batteryOptions"] integerValue] : 0);
 	showMinusSign = (prefs && [prefs objectForKey:@"showMinusSign"] ? [[prefs valueForKey:@"showMinusSign"] boolValue] : YES);
+	batteryTextColor = [[UIColor alloc] initWithHbcp_propertyListValue: [prefs objectForKey:@"batteryTextIcon"]];
 }
 
 %ctor{

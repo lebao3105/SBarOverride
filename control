@@ -6,5 +6,5 @@ Description: An awesome status bar tweak!
 Maintainer: lebao3105
 Author: lebao3105
 Section: Tweaks
-Depends: 
+Depends: ws.hbang.alderis (>= 1.2)
 SileoDepiction: https://raw.githubusercontent.com/lebao3105/repo/main/descriptions/me.lebao3105.sbaroverride.json

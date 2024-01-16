@@ -61,6 +61,22 @@
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>cellClass</key>
+			<string>HBColorPickerTableCell</string>
+			<key>label</key>
+			<string>Text color</string>
+			<key>key</key>
+			<string>batteryTextColor</string>
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>showsAlphaSlider</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>me.lebao3105.sbartweakprefsUpdated</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>Battery percentage icon</string>
