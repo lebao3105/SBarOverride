@@ -10,7 +10,7 @@ SBarTweakPrefs_FRAMEWORKS = UIKit
 SBarTweakPrefs_PRIVATE_FRAMEWORKS = Preferences
 SBarTweakPrefs_INSTALL_PATH = /Library/PreferenceBundles
 SBarTweakPrefs_CFLAGS = -fobjc-arc
-SBarTweakPrefs_LIBRARIES = colorpicker
+# SBarTweakPrefs_LIBRARIES = colorpicker
 
 ifneq ($(FINALPACKAGE), 1)
 	SBarTweakPrefs_CFLAGS += -DDEV_BUILD

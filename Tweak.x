@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <Alderis/Alderis.h>
+// #import <Alderis/Alderis.h>
 #ifdef DEBUG_RLOG
 #import <RemoteLog.h>
 #endif
@@ -20,49 +20,45 @@ static UIColor *batteryTextColor;
 
 - (void) setText:(id) text {
 
-	if (enabled) {
-		#ifdef DEBUG_RLOG
-		RLog(text);
-		#endif
+	#ifdef DEBUG_RLOG
+	RLog(text);
+	#endif
 
-		if ([text rangeOfString:@":"].location != NSNotFound) {
-			if (enabledClock) {
-				NSString *target = customtext;
-				if (enabledClockFormat) {
-					NSDateFormatter *df = [[NSDateFormatter alloc] init];
-					[df setDateFormat:customtext];
-					target = [df stringFromDate:[NSDate date]];
-				}
-				return %orig(target);
+	if ([text rangeOfString:@":"].location != NSNotFound) {
+		if (enabledClock) {
+			NSString *target = customtext;
+			if (enabledClockFormat) {
+				NSDateFormatter *df = [[NSDateFormatter alloc] init];
+				[df setDateFormat:customtext];
+				target = [df stringFromDate:[NSDate date]];
 			}
+			return %orig(target);
 		}
-		
-		else if ([text rangeOfString:@"%"].location != NSNotFound) {
-			if ((batteryOptions > (NSInteger)0) && (batteryOptions != (NSInteger)2)) {
-				UIDevice *mydev = [UIDevice currentDevice];
-				[mydev setBatteryMonitoringEnabled:YES];
-				int left = (int)([mydev batteryLevel] * 100);
-				NSString *target = [NSString stringWithFormat:@"%d%%", 100 - left];
-				if (showMinusSign)
-					return %orig([@"-" stringByAppendingString:target]);
-				return %orig(target);
-			}
-		}
-
-		else if (enabledCarrier)
-			return %orig(customCarriertext);
 	}
+	
+	else if ([text rangeOfString:@"%"].location != NSNotFound) {
+		if ((batteryOptions > (NSInteger)0) && (batteryOptions != (NSInteger)2)) {
+			UIDevice *mydev = [UIDevice currentDevice];
+			[mydev setBatteryMonitoringEnabled:YES];
+			int left = (int)([mydev batteryLevel] * 100);
+			NSString *target = [NSString stringWithFormat:@"%d%%", 100 - left];
+			if (showMinusSign)
+				return %orig([@"-" stringByAppendingString:target]);
+			return %orig(target);
+		}
+	}
+
+	else if (enabledCarrier)
+		return %orig(customCarriertext);
 	
 	return %orig(text);
 }
 
-- (void)setColor: (id)color {
-	if (enabled) {
-		if (batteryTextColor)
-			return %orig(batteryTextColor);
-	}
-	return %orig(color);
-}
+// - (void)setColor: (id)color {
+// 	if (batteryTextColor)
+// 		return %orig(batteryTextColor);
+// 	return %orig(color);
+// }
 
 %end
 
@@ -91,7 +87,7 @@ void preferencesChanged() {
 	customtext = [prefs objectForKey:@"customtext"];
 	batteryOptions = (prefs && [prefs objectForKey:@"batteryOptions"] ? [[prefs valueForKey:@"batteryOptions"] integerValue] : 0);
 	showMinusSign = (prefs && [prefs objectForKey:@"showMinusSign"] ? [[prefs valueForKey:@"showMinusSign"] boolValue] : YES);
-	batteryTextColor = [[UIColor alloc] initWithHbcp_propertyListValue: [prefs objectForKey:@"batteryTextIcon"]];
+	// batteryTextColor = [[UIColor alloc] initWithHbcp_propertyListValue: [prefs objectForKey:@"batteryTextColor"]];
 }
 
 %ctor{
@@ -101,5 +97,6 @@ void preferencesChanged() {
 									NULL, (CFNotificationCallback)preferencesChanged,
 									CFSTR("me.lebao3105.sbartweakprefsUpdated"),
 									NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-	%init(SBarOverride);
+	if (enabled)
+		%init(SBarOverride);
 }

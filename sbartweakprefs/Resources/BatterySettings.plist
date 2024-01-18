@@ -61,6 +61,12 @@
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
 		</dict>
+		<!-- <dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Text color</string>
+		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
@@ -76,9 +82,9 @@
 			<true/>
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
-		</dict>
+		</dict> -->
 	</array>
 	<key>title</key>
-	<string>Battery percentage icon</string>
+	<string>Battery percentage</string>
 </dict>
 </plist>

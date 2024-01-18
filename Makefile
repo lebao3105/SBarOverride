@@ -1,5 +1,4 @@
 TARGET := iphone:clang:15.5:15.0
-INSTALL_TARGET_PROCESSES = SpringBoard
 THEOS_DEVICE_ID = 127.0.0.1
 
 export FINALPACKAGE
@@ -10,7 +9,7 @@ TWEAK_NAME = SBarOverride
 
 SBarOverride_FILES = Tweak.x
 SBarOverride_CFLAGS = -fobjc-arc
-SBarOverride_FRAMEWORKS = Alderis
+# SBarOverride_FRAMEWORKS = Alderis
 
 ifeq ($(DEBUG_RLOG), 1)
 	SBarOverride_CFLAGS += -DDEBUG_RLOG
