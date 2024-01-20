@@ -57,15 +57,27 @@
 			<key>key</key>
 			<string>showMinusSign</string>
 			<key>label</key>
-			<string>Show minus sign in front of the percentage</string>
+			<string>Show percentage in negative format</string>
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
 		</dict>
-		<!-- <dict>
+		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Text color</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>label</key>
+			<string>Enable</string>
+			<key>defaults</key>
+			<string>me.lebao3105.sbartweakprefs</string>
+			<key>key</key>
+			<string>enableBatteryColor</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -79,10 +91,10 @@
 			<key>defaults</key>
 			<string>me.lebao3105.sbartweakprefs</string>
 			<key>showsAlphaSlider</key>
-			<true/>
+			<false/>
 			<key>PostNotification</key>
 			<string>me.lebao3105.sbartweakprefsUpdated</string>
-		</dict> -->
+		</dict>
 	</array>
 	<key>title</key>
 	<string>Battery percentage</string>

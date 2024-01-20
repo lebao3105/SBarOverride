@@ -1,5 +1,5 @@
 TARGET := iphone:clang:15.5:15.0
-THEOS_DEVICE_ID = 127.0.0.1
+INSTALL_TARGET_PROCESSES = SpringBoard
 
 export FINALPACKAGE
 
@@ -7,9 +7,8 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = SBarOverride
 
-SBarOverride_FILES = Tweak.x
+SBarOverride_FILES = UIColor+SBO.m Tweak.x
 SBarOverride_CFLAGS = -fobjc-arc
-# SBarOverride_FRAMEWORKS = Alderis
 
 ifeq ($(DEBUG_RLOG), 1)
 	SBarOverride_CFLAGS += -DDEBUG_RLOG
